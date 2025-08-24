@@ -44,7 +44,7 @@ export const CreatePost = () => {
   const [communityId, setCommunityId] = useState<number | null>(null);
 
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
-
+  const [successMessage, setSuccessMessage] = useState<string>("");
   const { user } = useAuth();
 
   const { data: communities } = useQuery<Community[], Error>({
@@ -53,11 +53,20 @@ export const CreatePost = () => {
   });
 
   const { mutate, isPending, isError } = useMutation({
-    mutationFn: (data: { post: PostInput; imageFile: File }) => {
-      return createPost(data.post, data.imageFile);
+    mutationFn: (data: { post: PostInput; imageFile: File }) =>
+      createPost(data.post, data.imageFile),
+    onSuccess: () => {
+      // clear inputs
+      setTitle("");
+      setContent("");
+      setCommunityId(null);
+      setSelectedFile(null);
+
+      // show success message
+      setSuccessMessage("✅ پست با موفقیت ایجاد شد!");
+      setTimeout(() => setSuccessMessage(""), 3000);
     },
   });
-
   const handleSubmit = (event: React.FormEvent) => {
     event.preventDefault();
     if (!selectedFile) return;
@@ -133,7 +142,8 @@ export const CreatePost = () => {
         {isPending ? "درحال ساخت..." : "ایجاد پست "}
       </Button>
 
-      {isError && <ErrorMessage>خطا در ایجاد پست.</ErrorMessage>}
+      {isError && <ErrorMessage>❌ خطا در ایجاد پست.</ErrorMessage>}
+      {successMessage && <SuccessMessage>{successMessage}</SuccessMessage>}
     </Form>
   );
 };
@@ -188,4 +198,8 @@ const Button = styled.button`
 
 const ErrorMessage = styled.p`
   color: #ef4444; /* text-red-500 */
+`;
+const SuccessMessage = styled.p`
+  color: #22c55e; /* green */
+  font-weight: 500;
 `;

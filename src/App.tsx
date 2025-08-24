@@ -8,21 +8,6 @@ import styled from "styled-components";
 import { CreateCommunityPage } from "./pages/CreateCommunityPage";
 import { CommunitiesPage } from "./pages/CommunitiesPage";
 import { CommunityPage } from "./pages/CommunityPage";
-// Styled Components
-const AppWrapper = styled.div`
-  min-height: 100vh;
-  background-color: black;
-  color: #f3f4f6; /* tailwind's text-gray-100 */
-  transition: opacity 0.7s ease;
-  padding-top: 5rem;
-`;
-
-const Container = styled.div`
-  max-width: 1024px;
-  margin-left: auto;
-  margin-right: auto;
-  padding: 1.5rem 1rem;
-`;
 
 function App() {
   return (
@@ -41,5 +26,20 @@ function App() {
     </AppWrapper>
   );
 }
-
 export default App;
+
+// Styled Components
+const AppWrapper = styled.div`
+  min-height: 100vh;
+  background-color: black;
+  color: #f3f4f6; /* tailwind's text-gray-100 */
+  transition: opacity 0.7s ease;
+  padding-top: 5rem;
+`;
+
+const Container = styled.div`
+  max-width: 1024px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 1.5rem 1rem;
+`;
