@@ -20,8 +20,9 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
       setUser(session?.user ?? null);
     });
 
-    return () => {};
-    listener.subscription.unsubscribe();
+    return () => {
+      listener.subscription.unsubscribe();
+    };
   }, []);
 
   const signInWithGitHub = () => {
