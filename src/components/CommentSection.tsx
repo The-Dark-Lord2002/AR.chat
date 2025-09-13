@@ -119,7 +119,7 @@ export const CommentSection = ({ postId }: Props) => {
     return roots;
   };
 
-  if (isLoading) return <div>Loading comments...</div>;
+  if (isLoading) return <div>در حال بارگذاری نظرات...</div>;
   if (error) return <div>Error: {error.message}</div>;
 
   const commentTree = comments ? buildCommentTree(comments) : [];

@@ -14,7 +14,7 @@ export function Navbar() {
       <Container>
         <Inner>
           <Logo to="/">
-            AR<span>.Chat</span>
+            تصویر<span>کده</span>
           </Logo>
           <DesktopLinks>
             <Link to="/">خانه</Link>

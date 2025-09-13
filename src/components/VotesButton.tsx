@@ -76,7 +76,7 @@ export function VotesButton({ postId }: Props) {
     },
   });
 
-  if (isLoading) return <div>Loading votes...</div>;
+  if (isLoading) return <div>بارگیری آرا...</div>;
   if (error) return <div>Error: {error.message}</div>;
 
   const likes = votes?.filter((v) => v.vote === 1).length || 0;
