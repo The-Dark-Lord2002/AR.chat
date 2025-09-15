@@ -119,7 +119,7 @@ export const CreatePost = () => {
       <div>
         <Label htmlFor="community">انتخاب انجمن</Label>
         <Select id="community" onChange={handleCommunityChange}>
-          <option value={""}>-- Choose a Community --</option>
+          <option value={""}>-- یک انجمن انتخاب کنید --</option>
           {communities?.map((community, key) => (
             <option key={key} value={community.id}>
               {community.name}
